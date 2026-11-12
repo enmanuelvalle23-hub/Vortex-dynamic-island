@@ -1,51 +1,82 @@
-#  Vortex Shell
+# Vortex Dynamic Island
 
-A dynamic OLED top-bar island and system command center built with **Quickshell (Qt6/QML)** for **Wayland & Hyprland**.
+An OLED top-bar dynamic island and system command center built with **Quickshell (Qt6/QML)** for **Wayland & Hyprland**.
 
-##  Key Features
+## Features
 
 - **Vortex Core (Telemetry & Power):**
-  - Real-time CPU & GPU usage, thermals, storage (`/`), and RAM monitoring.
-  - **ASUS ROG / Power Profile switcher** (*Quiet / Balanced / Performance*).
-  - **Native Battery Charge Limit toggle** (`60% / 80% / 100%`) directly from the battery card.
+  - Real-time CPU & GPU utilization, thermals, disk usage (`/`), and RAM monitoring.
+  - **Power Profile Switcher:** Toggle between *Quiet*, *Balanced*, and *Performance* (`asusctl` / `powerprofilesctl`).
+  - **Native Battery Charge Limit:** Cycle physical battery charge thresholds (`60%` / `80%` / `100%`) directly from the battery card.
 - **Net & Sec Module:**
   - Live local `LISTEN` ports counter (`ss -tuln`).
-  - **1-Click Tailscale / VPN Manager:** View tunnel status, copy private VPN IP with left-click, or toggle the tunnel ON/OFF directly.
-- **Media Player & Live Spectrum:**
-  - 15-bar reactive audio spectrum visualizer + compact 5-bar island equalizer (`PipeWire / ALSA / Cava`).
-  - Synced LRC lyrics viewer (`LRCLIB`) and floating **Pill Bar** lyrics mode.
+  - **1-Click Tailscale / VPN Control:** View tunnel status, left-click the IP to copy it to the clipboard, or use the `ON`/`OFF` button to toggle the tunnel.
+- **Media Player & Live Audio Spectrum:**
+  - 15-bar reactive spectrum visualizer + compact 5-bar island equalizer (`PipeWire` / `ALSA` / `Cava`).
+  - Synced `.lrc` lyrics viewer (`LRCLIB`) and floating **Pill Bar** lyrics mode.
 - **Weather Forecast:**
-  - Current conditions, humidity, wind, sunrise/sunset, and 7-day forecast.
+  - Current conditions, humidity, wind speed, sunrise/sunset times, and 7-day forecast.
 - **Bento File Shelf & Smart Clipboard:**
   - Drag-and-drop file shelf with quick system folder launchers.
-  - **Smart Clipboard Actions:** Auto-detects IPs/domains (`Ping`), Base64 strings (`Decode`), and hashes (`MD5/SHA`), plus an **Incognito Mode** to pause clipboard logging.
+  - **Smart Clipboard Actions:** Automatically detects IPs/domains (`Ping`), Base64 strings (`B64`), and hashes (`MD5/SHA`), plus an **🕵 Incognito Mode** to pause clipboard history.
 - **Todo List, Agenda & Focus Timer:**
-  - Scheduled reminders with critical desktop notifications and integrated **Pomodoro Timer**.
-- **Touchpad Gesture Navigation & IPC CLI (`vortex-ctl`):**
-  - Two-finger horizontal/vertical touchpad swipe to cycle smoothly across all 6 tabs.
-  - Control Vortex from terminal or Hyprland keybinds via `vortex-ctl`.
+  - Task manager, scheduled agenda events with desktop notifications, and an integrated **Pomodoro Timer**.
+- **Touchpad Gestures & CLI (`vortex-ctl`):**
+  - Two-finger touchpad swipe (horizontal or vertical) to cycle smoothly across all 6 tabs.
+  - Full IPC control via `vortex-ctl` for scripts and Hyprland keybindings.
+
+---
+
+## Dependencies
+
+Install the required packages on Arch Linux:
+
+```bash
+sudo pacman -S quickshell wl-clipboard jq curl playerctl libnotify iproute2
+```
+
+*(Optional)*: `cava` (for raw audio frequency spectrum), `tailscale` (for VPN module), `asusctl` or `power-profiles-daemon` (for power profiles and battery charge limits).
+
+---
 
 ## Installation
+
+### 1. Clone and run the installer
 
 ```bash
 git clone [https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git](https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git) ~/.config/quickshell/vortex
 cd ~/.config/quickshell/vortex
+chmod +x install.sh
 ./install.sh
-cd ~/.config/quickshell/vortex
+```
 
-# 1. Guardar una copia del CLI vortex-ctl dentro del repositorio para que se suba también
-mkdir -p bin
-cp ~/.local/bin/vortex-ctl bin/vortex-ctl
-chmod +x bin/vortex-ctl
+2. Launch Vortex
 
-# 2. Reemplazar rutas fijas '/home/valle' en QML por Quickshell.env("HOME") para que sea universal
-sed -i 's|"/home/valle/|Quickshell.env("HOME") + "/|g' shell.qml Vortex/*.qml 2>/dev/null || true
-sed -i 's|file:///home/valle/|"file://" + Quickshell.env("HOME") + "/|g' Vortex/*.qml 2>/dev/null || true
+```bash
+~/.config/quickshell/vortex/launch.sh
+```
 
-# 3. Crear archivo .gitignore para no subir archivos temporales ni copias .bak
-cat > .gitignore << 'EOF'
-*.bak
-*.log
-*.pyc
-__pycache__/
-.DS_Store
+### 3. Autostart on Hyprland (Optional)
+
+Add the following line to your `~/.config/hypr/hyprland.conf`:
+
+```ini
+exec-once = ~/.config/quickshell/vortex/launch.sh
+```
+
+> **Note:** Ensure `~/.local/bin` is in your `$PATH` to run `vortex-ctl` from any terminal.
+
+---
+
+## 🛠 CLI Usage (`vortex-ctl`)
+
+Control Vortex directly from the terminal or bind these commands in Hyprland:
+
+```bash
+vortex-ctl tab 0                              # Open Vortex on tab 0..5
+vortex-ctl alert "Build Ready" "Compiled OK"  # Trigger custom OSD notification
+vortex-ctl limit 80                           # Set battery charge limit (60/80/100)
+vortex-ctl incognito                          # Toggle clipboard incognito mode
+vortex-ctl minimal                            # Toggle minimal bar mode
+vortex-ctl restart                            # Restart Vortex
+```
