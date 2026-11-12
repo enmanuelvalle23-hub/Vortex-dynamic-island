@@ -18,7 +18,7 @@ An OLED top-bar dynamic island and system command center built with **Quickshell
   - Current conditions, humidity, wind speed, sunrise/sunset times, and 7-day forecast.
 - **Bento File Shelf & Smart Clipboard:**
   - Drag-and-drop file shelf with quick system folder launchers.
-  - **Smart Clipboard Actions:** Automatically detects IPs/domains (`Ping`), Base64 strings (`B64`), and hashes (`MD5/SHA`), plus an **🕵 Incognito Mode** to pause clipboard history.
+  - **Smart Clipboard Actions:** Automatically detects IPs/domains (`Ping`), Base64 strings (`B64`), and hashes (`MD5/SHA`), plus an **Incognito Mode** to pause clipboard history.
 - **Todo List, Agenda & Focus Timer:**
   - Task manager, scheduled agenda events with desktop notifications, and an integrated **Pomodoro Timer**.
 - **Touchpad Gestures & CLI (`vortex-ctl`):**
