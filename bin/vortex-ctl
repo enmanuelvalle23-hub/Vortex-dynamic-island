@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+CMD_FILE="/tmp/vortex_ctl_cmd"
+
+case "$1" in
+    tab)
+        echo "TAB|${2:-0}" > "$CMD_FILE"
+        ;;
+    minimal)
+        echo "MINIMAL|1" > "$CMD_FILE"
+        ;;
+    alert)
+        echo "ALERT|${2:-Vortex}|${3:-Notification}|${4:-⚡}" > "$CMD_FILE"
+        ;;
+    incognito)
+        echo "INCOGNITO|1" > "$CMD_FILE"
+        ;;
+    limit)
+        echo "LIMIT|${2:-80}" > "$CMD_FILE"
+        ;;
+    restart)
+        "$HOME/.config/quickshell/vortex/launch.sh"
+        ;;
+    *)
+        echo "Usage: vortex-ctl {tab [0-5] | alert <title> [detail] [icon] | minimal | incognito | limit [60|80|100] | restart}"
+        ;;
+esac

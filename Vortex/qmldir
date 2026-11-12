@@ -1,0 +1,6 @@
+module Vortex
+singleton StateStore 1.0 StateStore.qml
+NotchContainer 1.0 NotchContainer.qml
+CoreWave 1.0 CoreWave.qml
+OsdAlert 1.0 OsdAlert.qml
+CalendarView 1.0 CalendarView.qml
