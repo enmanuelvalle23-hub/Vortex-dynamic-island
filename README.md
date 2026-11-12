@@ -1,8 +1,8 @@
-# ⚡ Vortex Shell
+#  Vortex Shell
 
 A dynamic OLED top-bar island and system command center built with **Quickshell (Qt6/QML)** for **Wayland & Hyprland**.
 
-## ✨ Key Features
+##  Key Features
 
 - **Vortex Core (Telemetry & Power):**
   - Real-time CPU & GPU usage, thermals, storage (`/`), and RAM monitoring.
