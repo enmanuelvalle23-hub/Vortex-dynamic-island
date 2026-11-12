@@ -18,14 +18,14 @@ A dynamic OLED top-bar island and system command center built with **Quickshell 
   - Current conditions, humidity, wind, sunrise/sunset, and 7-day forecast.
 - **Bento File Shelf & Smart Clipboard:**
   - Drag-and-drop file shelf with quick system folder launchers.
-  - **Smart Clipboard Actions:** Auto-detects IPs/domains (`⚡ Ping`), Base64 strings (`🔓 Decode`), and hashes (`🔐 MD5/SHA`), plus an **🕵 Incognito Mode** to pause clipboard logging.
+  - **Smart Clipboard Actions:** Auto-detects IPs/domains (`Ping`), Base64 strings (`Decode`), and hashes (`MD5/SHA`), plus an **Incognito Mode** to pause clipboard logging.
 - **Todo List, Agenda & Focus Timer:**
   - Scheduled reminders with critical desktop notifications and integrated **Pomodoro Timer**.
 - **Touchpad Gesture Navigation & IPC CLI (`vortex-ctl`):**
   - Two-finger horizontal/vertical touchpad swipe to cycle smoothly across all 6 tabs.
   - Control Vortex from terminal or Hyprland keybinds via `vortex-ctl`.
 
-## 🚀 Installation
+## Installation
 
 ```bash
 git clone [https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git](https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git) ~/.config/quickshell/vortex
