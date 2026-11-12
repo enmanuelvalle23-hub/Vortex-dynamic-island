@@ -28,7 +28,7 @@ A dynamic OLED top-bar island and system command center built with **Quickshell 
 ## 🚀 Installation
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/vortex-shell.git](https://github.com/YOUR_USERNAME/vortex-shell.git) ~/.config/quickshell/vortex
+git clone [https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git](https://github.com/enmanuelvalle23-hub/Vortex-dynamic-island.git) ~/.config/quickshell/vortex
 cd ~/.config/quickshell/vortex
 ./install.sh
 cd ~/.config/quickshell/vortex
